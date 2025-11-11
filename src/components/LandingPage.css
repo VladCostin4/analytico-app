@@ -8,25 +8,47 @@
 /* Desktop: maintain 1920:1080 aspect ratio, no scroll */
 @media (min-width: 1024px) {
   .landing-page {
-    min-height: 100vh; /* Always fill viewport height - footer sticks to bottom */
-    height: 56.25vw; /* 1920:1080 aspect ratio (1080/1920 = 0.5625) */
-    max-height: 100vh; /* Don't exceed viewport height */
-    overflow: hidden; /* No scroll on desktop */
+    min-height: 100vh;
+    height: 56.25vw;
+    max-height: 100vh;
+    overflow: hidden;
   }
-  
-  /* When viewport is taller than wide, use full viewport height */
+
   @media (max-aspect-ratio: 16/9) {
     .landing-page {
-      height: 100vh; /* Fill viewport when taller than 16:9 aspect ratio */
+      height: 100vh;
     }
   }
 }
 
-/* Smaller screens: allow scrolling and natural height */
+/* Smaller screens: allow scrolling */
 @media (max-width: 1023px) {
   .landing-page {
     min-height: 100vh;
     overflow: visible;
+  }
+
+  .hero {
+    min-height: auto; /* allow hero to grow naturally */
+    padding-bottom: 100px; /* add space below Donut Shop */
+  }
+
+  .hero-assets {
+    max-height: none; /* remove height restriction */
+    height: auto;
+  }
+
+  .hero-right {
+    max-height: none;
+    height: auto;
+  }
+
+  .how-it-works {
+    margin-top: 20px; /* small consistent gap between sections */
+  }
+
+  .chat-overlay-text {
+    top: -8% !important;
   }
 }
 
@@ -67,13 +89,14 @@
 
 /* Hero Section */
 .hero {
-  flex: 1.2;
+  flex: 1.4;
   display: flex;
   align-items: center;
   background-color: #ffffff;
-  padding: 0;
+  padding-top: 20px;
   overflow: hidden;
   min-height: 0;
+  margin-bottom: 20px;
 }
 
 .hero .container {
@@ -94,38 +117,43 @@
 .hero-left {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 18px;
   justify-content: center;
+  align-items: center;
   flex: 1;
+  text-align: center;
 }
 
 .hero-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: #f97316;
-  line-height: 1.1;
+  line-height: 1.2;
   margin: 0;
-  text-align: center;
+  max-width: 400px; /* smaller width */
 }
 
 .hero-description {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #6b7280;
   line-height: 1.4;
   margin: 0;
-  text-align: center;
+  max-width: 420px;
 }
 
 .hero-cta {
   display: flex;
+  flex-direction: row; /* same line now */
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   margin-top: 4px;
 }
 
 .email-input {
-  flex: 1;
+  width: 220px;
   padding: 8px 12px;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   border: 2px solid #e5e7eb;
   border-radius: 6px;
   outline: none;
@@ -138,7 +166,7 @@
 
 .btn-primary {
   padding: 8px 20px;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
   background-color: #f97316;
   color: white;
@@ -154,14 +182,14 @@
 }
 
 .hero-note {
-  font-size: 0.65rem;
-  color: #3b82f6;
+  font-size: 0.8rem;
+  color: #1e3a8a;
   margin: 0;
   font-style: italic;
   font-weight: 700;
-  text-align: center;
 }
 
+/* Hero Assets (Donut + Chat Bubble) */
 .hero-right {
   display: flex;
   justify-content: center;
@@ -174,9 +202,9 @@
 .hero-assets {
   position: relative;
   width: 100%;
-  max-width: 250px;
+  max-width: 340px;
   height: 100%;
-  max-height: 250px;
+  max-height: 340px;
 }
 
 .hero-asset-big {
@@ -190,14 +218,15 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  transform: scale(1.1);
 }
 
 .hero-asset-small {
   position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 40%;
-  height: 40%;
+  top: -50px;
+  right: -70px;
+  width: 55%;
+  height: 55%;
   z-index: 10;
 }
 
@@ -210,14 +239,15 @@
 
 /* How it works Section */
 .how-it-works {
-  flex: 0.8;
+  flex: 0.9;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: #ffffff;
-  padding: 0;
+  padding: 0 0 60px 0; /* space before footer */
   overflow: hidden;
   min-height: 0;
+  margin-top: -20px; /* move slightly up */
 }
 
 .how-it-works .container {
@@ -225,25 +255,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 8px;
 }
 
 .section-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
   color: #1e3a8a;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   flex-shrink: 0;
 }
 
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  flex: 1;
-  align-content: center;
+  gap: 28px;
+  justify-items: center;
 }
-
 
 /* Footer */
 .footer {
@@ -263,40 +292,53 @@
 @media (max-width: 1024px) {
   .hero-content {
     flex-direction: column;
-    gap: 20px;
+    gap: 60px;
   }
 
-  /* Keep the order: left first, then right - don't swap */
   .hero-right {
-    max-height: 200px;
+    max-height: 240px;
   }
 
   .hero-assets {
-    max-height: 200px;
+    max-height: 240px;
   }
 
   .steps-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 16px;
   }
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 20px 0;
+  }
+
   .hero-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .hero-description {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
   }
 
   .hero-cta {
-    flex-direction: column;
+    flex-direction: column; /* stack for small screens */
   }
 
   .email-input,
   .btn-primary {
     width: 100%;
+  }
+
+  .hero-assets {
+    max-width: 220px;
+    max-height: 220px;
+  }
+
+  .hero-asset-small {
+    width: 45%;
+    height: 45%;
   }
 
   .section-title {
@@ -311,10 +353,25 @@
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
   }
 
   .container {
     padding: 0 12px;
   }
+}
+
+/* Overlay text inside hero-right over the chat bubble */
+.chat-overlay-text {
+  position: absolute;
+  top: 2%;       /* move a bit down */
+  left: 66%;      /* move a bit right */
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  width: 180px;
+  line-height: 1.2;
+  z-index: 15;
+  pointer-events: none;
 }

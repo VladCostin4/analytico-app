@@ -1,7 +1,19 @@
+import { useState } from 'react';
+
 import './LandingPage.css'
-import StepCard from './StepCard/StepCard'
+import StepCard from './StepCard/StepCard.jsx'
 
 function LandingPage() {
+  const [email, setEmail] = useState('');
+
+  const handleInputChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleClearInput = () => {
+    setEmail('');
+  };
+
   return (
     <div className="landing-page">
       {/* Header */}
@@ -28,8 +40,10 @@ function LandingPage() {
                   type="email" 
                   placeholder="Enter your email" 
                   className="email-input"
+                  value={email}
+                  onChange={handleInputChange}
                 />
-                <button className="btn-primary">Get Early Access</button>
+                <button className="btn-primary" onClick={handleClearInput}>Get Early Access</button>
               </div>
               <p className="hero-note">Coming soon to help your business make smarter decisions.</p>
             </div>
@@ -40,6 +54,9 @@ function LandingPage() {
                 </div>
                 <div className="hero-asset-small">
                   <img className="" src="src/assets/chat_bubble.png" alt="Chat Bubble" />
+                </div>
+                <div className="chat-overlay-text">
+                  <p>PSSST..<br/>Tomorrow's best-seller: <b>chocolate-donuts (↑ 15%)</b></p>
                 </div>
               </div>
             </div>
