@@ -3,6 +3,14 @@ import { useState } from 'react';
 import './LandingPage.css'
 import StepCard from './StepCard/StepCard.jsx'
 
+import logo from '../assets/logo.png';
+import DonutShop from '../assets/donut_shop.png';
+import ChatBubble from '../assets/chat_bubble.png';
+import stepImg1 from '../assets/how_it_works_1.png';
+import stepImg2 from '../assets/how_it_works_2.png';
+import stepImg31 from '../assets/how_it_works_3_1.png';
+import stepImg32 from '../assets/how_it_works_3_2.png';
+
 function LandingPage() {
   const [email, setEmail] = useState('');
 
@@ -20,7 +28,7 @@ function LandingPage() {
       <header className="top-header">
         <div className="container">
           <div className="logo">
-            <img className="logo-icon" src="src/assets/logo.png" alt="Analytico" />
+            <img className="logo-icon" src={logo} alt="Analytico" />
             <span className="logo-text">Analytico</span>
           </div>
         </div>
@@ -50,10 +58,10 @@ function LandingPage() {
             <div className="hero-right">
               <div className="hero-assets">
                 <div className="hero-asset-big">
-                  <img className="" src="src/assets/donut_shop.png" alt="Donut Shop" />
+                  <img className="" src={DonutShop} alt="Donut Shop" />
                 </div>
                 <div className="hero-asset-small">
-                  <img className="" src="src/assets/chat_bubble.png" alt="Chat Bubble" />
+                  <img className="" src={ChatBubble} alt="Chat Bubble" />
                 </div>
                 <div className="chat-overlay-text">
                   <p>PSSST..<br/>Tomorrow's best-seller: <b>chocolate-donuts (↑ 15%)</b></p>
@@ -73,21 +81,21 @@ function LandingPage() {
               number={1}
               title="Upload your sales data"
               description="Just drag & drop your Excel or CSV file."
-              images={{ src: "src/assets/how_it_works_1.png", alt: "How it works 1" }}
+              images={{ src: stepImg1, alt: "How it works 1" }}
             />
             <StepCard
               number={2}
               title="Ask in plain language"
               description='"What will sell best in the weekend?" → Instant answer'
-              images={{ src: "src/assets/how_it_works_2.png", alt: "How it works 2" }}
+              images={{ src: stepImg2, alt: "How it works 2" }}
             />
             <StepCard
               number={3}
               title="See predictions"
               description="Clear insights anyone can understand"
               images={[
-                { src: "src/assets/how_it_works_3_1.png", alt: "How it works 3.1" },
-                { src: "src/assets/how_it_works_3_2.png", alt: "How it works 3.2" }
+                { src: stepImg31, alt: "How it works 3.1" },
+                { src: stepImg32, alt: "How it works 3.2" }
               ]}
             />
           </div>
