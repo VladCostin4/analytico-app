@@ -337,8 +337,10 @@
   }
 
   .hero-asset-small {
-    width: 45%;
-    height: 45%;
+    width: 85%;
+    height: 65%;
+    top: -50px;
+    right: -110px;
   }
 
   .section-title {
